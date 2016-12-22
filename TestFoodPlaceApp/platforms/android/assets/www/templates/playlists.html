@@ -1,0 +1,19 @@
+<ion-view view-title="Playlists">
+    <ion-content class="has-header">
+        <!--<ion-list>
+            <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
+            {{playlist.title}}
+            </ion-item>
+        </ion-list>-->
+       <ion-list>
+            <ion-item class="item-avatar" ng-repeat="item in items">
+                <!--<img src="{{item.restaurant.thumb}}" style="width: 100%; height: 100%;" />-->
+                
+                <h2>{{item.title}}</h2>
+                <p>{{item.Content}}</p>
+            </ion-item>
+        </ion-list>
+
+        <ion-infinite-scroll on-infinite="loadMoreData()" icon="ion-loading-c"
+           distance="5%"></ion-infinite-scroll>
+</ion-view>
