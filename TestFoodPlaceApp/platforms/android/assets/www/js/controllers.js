@@ -3,8 +3,8 @@ var APIquerykey = 'kuala lumpur';
 
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $state, $timeout) {
-
+.controller('AppCtrl', function($scope, $ionicModal, $state, $ionicPopup, $timeout) {
+    // Code Push access key: d-XsHC28OjjumBtjRun372-5HNW-Ekw9wOV4z
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -34,7 +34,47 @@ angular.module('starter.controllers', [])
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
+      console.log('Doing login', $scope.loginData);
+
+      console.log('check for code push update');
+
+      var vm = this;
+      var deploymentKey = 'q8hz4ChBVHXZXMWWK2lEwMYe1ZGaEkw9wOV4z';
+      vm.codePush = codePush;
+
+      logRes = function (res) {
+          console.log(res);
+      }
+
+      //codePush.getPendingPackage(function (update) {
+      //        console.log(update);
+      //});
+
+      //vm.checkForUpdate = function () {
+      //    debugger
+      //    codePush.checkForUpdate(logRes, logRes, deploymentKey);
+
+      //        //.catch(onError);
+      //};
+
+      vmsyncCallback = function (res) {
+          console.log(res);
+      }
+
+      vm.sync = function () {
+          debugger
+          //codePush.sync(deploymentKey);
+          codePush.sync(vmsyncCallback, { updateDialog: true }, deploymentKey);
+
+              //.catch(onError);
+      };
+
+      var onError = function (error) {
+          vm.error = error;
+          console.log(error);
+      };
+
+      //vm.sync();
 
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system

@@ -19,7 +19,34 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+      debugger
+      console.log(codePush);
+      var deploymentKey = 'q8hz4ChBVHXZXMWWK2lEwMYe1ZGaEkw9wOV4z';
+
+      //codePush.checkForUpdate(logRes, logRes, deploymentKey);
+
+      var updateDialogOptions = {
+          updateTitle: "You have an update",
+          optionalUpdateMessage: "Update available. Install?",
+          optionalIgnoreButtonLabel: "Nop",
+          optionalInstallButtonLabel: "Yep",
+      };
+
+      codePush.sync({ updateDialog: updateDialogOptions });
+      //codePush.sync();
+
+    
+      //codePush.checkForUpdate(function (res) {
+      //    console.log(res);
+      //}, 
+      //function (fail) { console.log(fail); },
+      // 'q8hz4ChBVHXZXMWWK2lEwMYe1ZGaEkw9wOV4z'
+      // );
   });
+
+  logRes = function (res) {
+      console.log(res);
+  };
 })
 
 .config(function($stateProvider, $urlRouterProvider) {

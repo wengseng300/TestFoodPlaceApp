@@ -1,6 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <manifest android:hardwareAccelerated="true" android:versionCode="1" android:versionName="0.0.1" package="io.cordova.myapp891d9b" xmlns:android="http://schemas.android.com/apk/res/android">
     <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true" android:xlargeScreens="true" />
+    <access origin="*" />
+    <access origin="https://codepush.azurewebsites.net" />
+    <access origin="https://codepush.blob.core.windows.net" />
+    <access origin="https://codepushupdates.azureedge.net" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -12,5 +16,9 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="22" />
+    <platform name="android">
+        <preference name="CodePushDeploymentKey" value="q8hz4ChBVHXZXMWWK2lEwMYe1ZGaEkw9wOV4z" />
+    </platform>
+    <uses-sdk android:maxSdkVersion="19" android:minSdkVersion="16" android:targetSdkVersion="19" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>
